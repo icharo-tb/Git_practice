@@ -1,0 +1,59 @@
+GIT
+
+Git Version check:
+	git --version: checks our actual version of Git (similar to other softwares)
+
+Git Config edition:
+	git config --global user.name "Your_name" (assigns a name to your data)
+	git config --global user.email "Your_email" (assigns an email to your data)
+	git config --global core.editor "code --wait" (Choose a coding software to open your config, in this case, code = VS Code and --wait will make the console wait untill the Code Editor is closed)
+	git config --global -e (This will open your config data on the editor you assigned previously)
+	git config --global core.autocrlf ("true" for windows, "input" for Mac, this will solve the problem in Note 1)
+
+Git commands:
+	git init (this will make the current folder where you are located as a master repository)
+	git add (adds files to the git repository to being followed since Git does not follow all files by default):
+- git add “nombre del archive sin comillas” (ex: git add file1.txt)
+- git add *”tipo de archivo sin comillas” (ex: git add *txt)
+- git add . (really bad praxis, we are just adding every single file)
+* extra notes: in case of wanting to add more than on known file, we can add several of them with a space as separation (ex: git add file1.txt file2.txt file3.txt…)
+git status (checks all the changes and status on the working branch of the repository)
+- git status -s (shows the status with reduced info, more effectively)
+git commit (commits and confirms every change on the Stage phase)
+- git commit -m “name what we changed or did”
+git rm “nombre del archivo” (this will delete our file with less steps)
+git diff (establish differences between changes)
+- git diff --staged (shows every changed done on the files even if they don’t appear on the normal diff command)
+git log (shows a complete log of changes and commits in the session, press q to exit)
+- git log --oneline (shows all logs on a single line without further info)
+git branch (shows on which branch we are working on)
+- git branch -m “new branch name” (renames the actual branch you are on with the name you specify)
+git checkout -b “nombre de la rama” (creates a new branch, some companies prefere using “feature/…” or others have specific ticket names)
+git remote add origin https://github.com/icharo-tb/Git_practice.git (code to upload our git to GitHub)
+
+git push -u origin main (code to link our GitHub account)
+
+
+
+Commands:
+	ls (Shows folders and files on the current directory you are working on)
+	pwd (Shows the directory you are working on)
+	cd and cd .. (CMD command to enter folders and exit from them)
+	mkdir "nombre_carpeta" (Will create a new folder on the directory you chose)
+	ls -a (Shows every file and folder even is they are hidden)
+	rm -rf .git (deletes an existent repository on the current directory)
+	mv “file name” “new file name” (this command will change the name of a file)
+	clear (clears the console)
+	cat “name of the file” (shows the content of the file)
+
+Notes about Git:
+	1) Two workers are working on the same repository, one on Windows and one on Linux/Mac: everytime Windows user makes a line break (salto de linea), windows will mark it either with CR (Carriage Return) or LF (Line Feed), while in the other hand, Linux/Mac will only mark those line breaks as LF. This means that the Windows user, in case of uploading data to the cluster or either downloading it will need to delete CRs or add them. Same applies if the Mac user wrote some CRs on the code.
+
+	2) Git has a total of 4 work phases, first of all we will use the command "git add" to select those files we have on our computer and we want to use on the Stage phase, in this second phase we will mark and show which changes are we applying to the document/code in order to go to the repository. Once we are sure we want to make those changes we will use the command "git commit" to advance into the next phase, the Commit phase; this is just a verification and compromise phase where we will later on use the command "git push" to finally release those changes to the server.
+
+	3) Git not only let us create new files and changes, but also delete the ones we don’t want or need; if we had file2.txt and we know that its not a file we need anymore, we can just delete it, but, how? We´ll use the command “rm file2.txt” (or git rm file2.txt to delete it faster), this way Git will mark this file as “deleted” which means you can either recover it if it wasn´t an intentional delete or completely delete it, first we will add the change with “git add file2.txt” to tell Git this is a change we will make and then delete it completely by “committing” the action with “git commit”, this way we will tell Git that this file is not useful anymore and it can be deleted from our working branch.
+
+	4) We can also restore files if we accidentally deleted them with “git restore --staged” and “git restore”.
+	5) It´s really common creating a .env on Git repositories as an environment file.
+	6) Branches on Git are extremely useful, it’s a really safe way of having several persons working on the same files without affecting each other´s work or compromising it. It´s as easy as creating your own branch and working there the whole time before merging results on the main branch.
+    7) Important to be organized and work on proper branches!!
