@@ -2,9 +2,9 @@ use('mongodatabase_env');
 
 db.info.insertOne([
   {
-  "name": 'He´s the greatest dancer',
-  "artist": 'Sister Sledge',
-  "genre": 'Disco, R&B',
-  "year": 1979
+  name: 'He´s the greatest dancer',
+  artist: 'Sister Sledge',
+  genre: ['Disco', 'R&B'],
+  year: 1979
   }
 ]);

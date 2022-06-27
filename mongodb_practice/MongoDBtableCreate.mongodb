@@ -1,0 +1,6 @@
+const database = 'MongoDB_env';
+const collection = 'info';
+
+use(database);
+
+db.createCollection(collection);

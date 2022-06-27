@@ -1,0 +1,3 @@
+use('mongodatabase_env');
+
+db.info.drop()

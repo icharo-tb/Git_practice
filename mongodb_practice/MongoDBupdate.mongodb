@@ -1,8 +1,5 @@
-use('mongodatabase_env');
+use('MongoDB_env');
 
-db.mongodb_practice.updateOne(
-    { "$id": "62b9786e007fdf2c06a8b1a2"},
-    {
-        $set: {remaster: "No"}
-    }
+db.info.updateMany(
+   {}, {$set: {album: "unknown"}, {remaster: false}}
 )
