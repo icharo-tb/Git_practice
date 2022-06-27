@@ -1,0 +1,36 @@
+use('mongodatabase_env');
+
+db.info.insertMany([
+      {
+  name: 'Bad Girls',
+  artist: 'Donna Summer',
+  genre: 'Disco, R&B',
+  year: 1979
+  },
+        {
+  name: 'We are family',
+  artist: 'Sister Sledge',
+  genre: 'Disco, R&B',
+  year: 1995,
+  remaster: "Yes"
+  },
+        {
+  name: 'Ring my bell',
+  artist: 'Anita Ward',
+  genre: 'Disco, R&B, Soul',
+  year: 1979
+  },
+        {
+  name: 'Get Down on It',
+  album: "Something Special",
+  artist: 'Kool and The Gang',
+  genre: 'Disco, R&B, Funk',
+  year: 1981
+  },
+        {
+  name: 'September',
+  artist: 'Earth, Wind & Fire',
+  genre: 'Disco, R&B',
+  year: 1978
+  },
+]);
