@@ -1,0 +1,8 @@
+use('mongodatabase_env');
+
+db.mongodb_practice.updateOne(
+    { "$id": "62b9786e007fdf2c06a8b1a2"},
+    {
+        $set: {remaster: "No"}
+    }
+)
