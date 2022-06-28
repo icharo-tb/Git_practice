@@ -1,0 +1,3 @@
+use('MongoDB_env');
+
+db.info.findOne({},{genre: 'Soul'})

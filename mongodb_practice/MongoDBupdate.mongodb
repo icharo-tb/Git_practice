@@ -1,5 +1,5 @@
 use('MongoDB_env');
 
-db.info.updateMany(
-   {}, {$set: {album: "unknown"}, {remaster: false}}
+db.info.updateOne(
+   {_id: '$oid': '62b997331385f9afc3310480'}, {$set: {remaster: 1}}
 )
