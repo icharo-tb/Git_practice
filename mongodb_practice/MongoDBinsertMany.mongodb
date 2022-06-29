@@ -1,0 +1,45 @@
+use('MongoDB_env');
+
+db.info.insertMany([
+      {
+  name: 'Got to Be Real',
+  artist: 'Cheryl Lynn',
+  genre: ['Disco'],
+  year: 1978
+  },
+        {
+  name: 'Le Freak',
+  album: 'C´est Chic',
+  artist: 'Chic',
+  genre: ['Soul', 'R&B'],
+  year: 1978,
+  remaster: "Yes",
+  remaster_year: 2018
+  },
+        {
+  name: 'Upside Down',
+  album: 'Diana',
+  artist: 'Diana Ross',
+  genre: ['R&B', 'Soul'],
+  year: 1980
+  },
+        {
+  name: 'I´m Coming Out',
+  album: "Diana",
+  artist: 'Diana Ross',
+  genre: ['Soul', 'R&B', 'Pop'],
+  year: 1980
+  },
+        {
+  name: 'Let´s Groove',
+  artist: 'Earth, Wind & Fire',
+  genre: ['Disco', 'Funk', 'Post-disco'],
+  year: 1981
+  },
+  {
+  name: 'Blame It on the Boogie',
+  artist: 'The Jackson 5',
+  genre: ['Disco'],
+  year: 1978
+  }
+]);

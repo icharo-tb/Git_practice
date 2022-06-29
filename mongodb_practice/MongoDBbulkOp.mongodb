@@ -1,0 +1,10 @@
+use('MongoDB_env');
+
+var bulk = db.info.initializeUnorderedBulkOp();
+
+bulk.find({collab: null}).update({$set: {collab: 'unknown'}});
+bulk.execute();
+
+// bulk update searching by the data without the collab field and setting it to a value
+// bulk let you update every single file at once with multiples queries
+// bulk needs a defined variable
