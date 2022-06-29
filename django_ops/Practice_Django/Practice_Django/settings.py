@@ -74,17 +74,15 @@ WSGI_APPLICATION = 'Practice_Django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASE = {
-    'default': {
-        'ENGINE': 'djongo',
-        "CLIENT": {
-           "name": 'MongoDB_env',
-           "host": 'mongodb+srv://Icharo-tb:<password>@clustericharo.cl5p9.mongodb.net/?retryWrites=true&w=majority',
-           "username": 'daniel.lopez.pajares.2021@gmail.com',
-           "password": 'abcdefg',
-           "authMechanism": "SCRAM-SHA-1",
-        }, 
-    }
+DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'MongoDB_env',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb+srv://Icharo-tb:abdcefg@clustericharo.cl5p9.mongodb.net/?retryWrites=true&w=majority'
+            }  
+        }
 }
 
 
