@@ -1,5 +1,7 @@
 from unittest import result
 
+from numpy import average
+
 
 width = 15
 height = 12.0
@@ -240,6 +242,30 @@ while True:
 print('Done')
 
 # continue statement will execute the next condition once the first one is done
+import numpy
+from numpy import average
+
+user_num = 0
+count = 0
+total = 0.0
+
+while True:
+    sel = input('Enter a number or done: ')
+    if sel == 'done':
+        break
+    try:
+        fsel = float(sel)
+        user_num = user_num + 1
+        total = total + fsel
+        count += 1
+        print('Your number: ', fsel)
+    except:
+        print('Invalid data')
+        continue
+
+print('Count:', count, '||', 'Last number added:', fsel, '||', 'Total average:', total)
+print('LOOP COMPLETED')
+
 
 # =================================================================================================
 
