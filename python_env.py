@@ -240,8 +240,8 @@ while True:
         break
     print(line)
 print('Done')
-
 # continue statement will execute the next condition once the first one is done
+
 import numpy
 from numpy import average
 
