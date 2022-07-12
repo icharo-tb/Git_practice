@@ -360,3 +360,30 @@ for num in [9, 34, 23, 65, 105, 1024, 92, 1, 0]:
         largest = num
     print(largest, num)
 print('After', largest)
+
+# =================================================================================================
+def split(fruit):
+    return[letter for letter in fruit]
+
+fruit = 'banana'
+for word in fruit.upper():
+    words = split(fruit)
+    count = words
+    print(word)
+print('Total of characters:', len(fruit))
+
+up = fruit.upper()
+index = 0
+while index < len(up):
+    letter = up[index]
+    print(index, letter)
+    index = index + 1
+
+for n in 'banana':
+    print(n)
+
+count = 0
+for letter in up:
+    if letter == 'A':
+        count = count + 1
+print(count)
