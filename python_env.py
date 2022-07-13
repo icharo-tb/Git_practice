@@ -362,6 +362,8 @@ for num in [9, 34, 23, 65, 105, 1024, 92, 1, 0]:
 print('After', largest)
 
 # =================================================================================================
+# STRING OPS
+
 def split(fruit):
     return[letter for letter in fruit]
 
@@ -387,3 +389,72 @@ for letter in up:
     if letter == 'A':
         count = count + 1
 print(count)
+
+# =================================================================================================
+# INTERMEDIATE STRING OPS
+
+s = 'Monty Python'
+print('String lenght:', len(s))
+print(s[0:4])
+print(s[3:6])
+print(s[5:13])
+# We can slice string by defining from which position we want to start and which one we want to end at
+
+bob = 'Hello Bob'
+zap = bob.lower()
+print(zap)
+try:
+    print(bob.lower())
+except:
+    print('Error')
+print('Hello'.lower())
+
+lat = 'Lorem Ipsum Dolor'
+print(lat.center(35))
+print(lat.center(35).casefold())
+print(lat.isalpha())
+print(lat.isascii())
+print(type(lat))
+print(dir(lat)) # this will show every possible operation over the object/string
+
+# str.capitalize(), str.center(width[, fillchar]), str.endswith(suffix[, start[, end]])
+# str.find(sub[, start[, end]]), str.lstrip([chars]), str.replace(old, new[, count])
+# str.lower(), str.rstrip([chars]), str.strip([chars]), str.upper()
+
+st2 = 'Hello World'
+rep = st2.replace('Hello', 'Hi')
+print(rep)
+
+st3 = 'banana'
+pos = st3.find('na')
+print(pos)
+print(st3.find('z'))
+
+
+st4 = '  Bob  '
+l = st4.lstrip()
+r = st4.rstrip()
+strip = st4.strip()
+print(st4)
+print(l)
+print(r)
+print(strip)
+# lstrip, rstrip and strip are string commands that help us drop spaces
+# lstrip will drop left spaces, rstrip will drop rspaces and strip will drop both sides spaces
+
+st5 = 'Please, give me water'
+print(st5.startswith('Please'))
+print(st5.startswith('P'))
+print(st5.startswith('p'))
+
+data = 'From stephen.marquard@utc.ac.za Sat Jan  5 09:14:16 2008'
+atpos = data.find('@')
+print(atpos)
+sppos = data.find(' ', atpos)
+print(sppos)
+host = data[atpos + 1 : sppos]
+print(host)
+
+word = "bananana"
+i = word.find("na")
+print(i)
