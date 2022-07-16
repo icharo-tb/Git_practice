@@ -1,3 +1,4 @@
+from pydoc import TextRepr
 from unittest import result
 
 from numpy import average
@@ -458,3 +459,75 @@ print(host)
 word = "bananana"
 i = word.find("na")
 print(i)
+
+# =================================================================================================
+# FILE READING WITH PYTHON
+
+text = open('file1.txt', 'r')
+print(text)
+
+hw = 'Hello\nWorld!'
+print(hw)
+# \n means newline, anytime we use this sytax it will display things on a new line 
+# in this particular example it shows Hello on a line and World! on another line
+# \n will also count on the variable content as an element 
+print(len(hw))
+
+def newline(text):
+    for line in text:
+        line = text.split()
+
+text = open('file1.txt', 'r')
+count = 0
+for line in text:
+    count = count + 1
+    print(line, 'Line count:' , count)
+
+text = open('file1.txt', 'r')
+inp = text.read()
+print(len(inp))
+
+text = open('file1.txt', 'r')
+for line in text:
+    line = line.splitlines()
+    print(line)
+
+text = open('file1.txt', 'r')
+for line in text:
+    print(line)
+
+text = open('file1.txt', 'r')
+for line in text:
+    rline = line.rstrip()
+    if rline.startswith('One'):
+        print(rline)
+    
+text = open('file1.txt', 'r')
+for line in text:
+    rline = line.rstrip()
+    if not rline.startswith('One'):
+        continue
+    print(rline)
+# we can use loops to iterate over the text to find the information we need
+
+def text_gen(your_text):
+    try:
+        text.open(your_text)
+    except:
+        print('File not found', your_text)
+        quit()
+    for line in your_text:
+        print(your_text)
+
+your_text = input('Enter your file name:')
+res = text_gen(your_text)
+print(res)
+
+# Exercise 1: Write a program to read through a file and print the contents of the file 
+# (line by line) all in upper case. (mbox file)
+
+text = open('mbox-short.txt', 'r')
+for line in text:
+    line = line.rstrip()
+    up = line.upper()
+    print(up)
