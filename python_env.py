@@ -1,3 +1,4 @@
+from opcode import HAVE_ARGUMENT
 from pydoc import TextRepr
 from unittest import result
 
@@ -531,3 +532,113 @@ for line in text:
     line = line.rstrip()
     up = line.upper()
     print(up)
+
+# =================================================================================================
+# EXTRA STUFF
+
+def coco(coquito = []):
+    coquito.append(['Coconut'])
+    return coquito
+
+coco_loco = coco()
+print(coco_loco)
+# this will append a new memory space everytime we execute it
+
+def coco_noice(coconutito = 0):
+    coconutito += 1
+    return coconutito
+
+print(coco_noice())
+
+# =================================================================================================
+# PYTHON LISTS
+
+fruit = 'BANANA'
+low = fruit.lower()
+print(low)
+
+num = [1, 4, 45, 67, 23]
+print(num)
+num[2] = 32
+print(num)
+# while numbers are able to change easily, strings are all inmutable, which means that they cannot be changed
+
+friends = ['Joseph', 'Glenn', 'Michael', 'Ana']
+
+for i in range(len(friends)):
+    friend = friends[i]
+    print('Happy New Year', friend + '!')
+
+stuff = list()
+stuff.append('Red')
+stuff.append('Blue')
+stuff.append(99)
+print(stuff)
+stuff.remove(99)
+print(stuff)
+stuff.sort()
+print(stuff)
+
+nums = [1, 2, 45, 56, 34, 21, 12, 67]
+print(nums)
+print('Lenght:', len(nums))
+print('Max:', max(nums))
+print('Min:', min(nums))
+print('Sum:', sum(nums))
+print('Operation:', sum(nums) / len(nums))
+
+numlist = list()
+while True:
+    inp = input('Enter a number to add to the list:')
+    if inp == 'done':
+        break
+    finp = float(inp)
+    numlist.append(finp)
+aver = sum(numlist) / len(numlist)
+print(numlist)
+print('Average:', aver)
+
+total = 0
+count = 0
+while True:
+    inp = input('Enter a number to add to the list:')
+    if inp == 'done':
+        break
+    finp = float(inp)
+    total = total + finp
+    count = count + 1
+op = total / count
+print(total)
+print('Average:', op)
+
+# =================================================================================================
+# STRINGS AND LISTS
+
+words = 'His e-mail is q-lar@freecodecamp.org'
+pieces = words.split()
+mailsp = pieces[1].split('-')
+m = mailsp[1]
+parts = pieces[3].split('-')
+n = parts[1]
+print(pieces)
+print(mailsp)
+print(m)
+print(parts)
+print(n)
+# split let us separate a word either on list elements or use to substract a character
+# in this case, - is being substituted by an space
+
+colon = 'Hey;,;how;are;you;doing;?'
+sep = colon.split(';')
+print(sep)
+
+fhand = open('mbox-short.txt', 'r')
+for line in fhand:
+    line = line.rstrip()
+    words = line.split()
+    if len(words) < 1:
+        continue
+    # guradian code line
+    elif words[0] != 'From':
+        continue
+    print(words[2])
