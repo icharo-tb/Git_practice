@@ -642,3 +642,28 @@ for line in fhand:
     elif words[0] != 'From':
         continue
     print(words[2])
+
+# =================================================================================================
+# FIBONACCI SEQUENCE
+
+num = int(input('Term lenght:'))
+
+n1, n2 = 0, 1
+count = 0
+
+if num <= 0:
+    print('Enter a positive integer')
+elif num == 1:
+    print(f'Fibonacci sequence upto {num} term:')
+    print(n1)
+else:
+    print('Fibonacci sequence:')
+    try:
+        while count < num:
+            print(n1)
+            res = n1 + n2
+            n1 = n2
+            n2 = res
+            count += 1
+    except:
+        print('Error')
