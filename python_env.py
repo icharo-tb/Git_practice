@@ -1,3 +1,4 @@
+from asyncio import CancelledError
 from opcode import HAVE_ARGUMENT
 from pydoc import TextRepr
 from unittest import result
@@ -667,3 +668,20 @@ else:
             count += 1
     except:
         print('Error')
+    
+# =================================================================================================
+# PYTHON DICTIONARIES
+
+bag = dict()
+bag['Towel'] = 1
+bag['Pencil'] = 3
+print(bag)
+bag['Candy'] = 3
+bag['Candy'] = bag['Candy'] + 2
+print(bag['Candy'])
+print(bag)
+
+purse = {'money': 12, 'lipstick': 3, 'cologne': 32}
+print(purse)
+# dictionaries work with a primary key and then a value (key: value)
+# this let us call an element easily inside the dictionary
