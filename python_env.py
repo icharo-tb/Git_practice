@@ -668,7 +668,21 @@ else:
             count += 1
     except:
         print('Error')
-    
+
+# 1-LINE FIBONACCI SEQUENCE CODE
+
+fibonacci = lambda x: x if x <= 1 else fibonacci(x-1) + fibonacci(x-2)
+# lambda can take an argument, called 'x' in this case
+
+print([fibonacci(i) for i in range(10)])
+
+def fibonacci_seq(i):
+    lambda x: x if x <= 1 else i(x-1) + i(x-2)
+    for i in range(10):
+        return i
+print(fibonacci_seq(i))
+# check later how to construct this function
+
 # =================================================================================================
 # PYTHON DICTIONARIES
 
