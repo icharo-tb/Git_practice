@@ -4,3 +4,5 @@ file2.txt
 MongoDB/
 .metals
 .vscode
+connection.py
+config.py
