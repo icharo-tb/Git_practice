@@ -107,6 +107,8 @@ if check_if_valid_data(df):
     print('Data validation correct. Proceed to LOAD phase.')
 
 # LOAD (L)
+# I will be loading the data into MongoDB local db using PyMongo
+
 try:
     client = pymongo.MongoClient('mongodb://localhost:27017/')
 except Exception as e:
