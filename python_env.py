@@ -699,3 +699,11 @@ purse = {'money': 12, 'lipstick': 3, 'cologne': 32}
 print(purse)
 # dictionaries work with a primary key and then a value (key: value)
 # this let us call an element easily inside the dictionary
+
+new_dict = []
+x = str(input())
+
+for thing in new_dict:
+    new_dict.append(new_dict[x])
+print(new_dict) 
+# doesn't work with input as expected

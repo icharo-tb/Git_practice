@@ -122,6 +122,12 @@ db_dict = song_dict
 db_dict = [db_dict]
 # Dictionaries will cause problems here, maybe trying bulk ops
 
+try:
+    bulk = collection.insert_many(song_dict)
+except:
+    print('Next step.')
+    sys.exit()
+
 mongo_insert = collection.insert_many(db_dict)
 
 print('ETL-Pipeline process completed!')
