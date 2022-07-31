@@ -1,6 +1,7 @@
 from asyncio import CancelledError
 from opcode import HAVE_ARGUMENT
 from pydoc import TextRepr
+from tkinter import W
 from unittest import result
 
 from numpy import average
@@ -645,7 +646,7 @@ for line in fhand:
     print(words[2])
 
 # =================================================================================================
-# FIBONACCI SEQUENCE
+# BONUS: FIBONACCI SEQUENCE
 
 num = int(input('Term lenght:'))
 
@@ -669,7 +670,7 @@ else:
     except:
         print('Error')
 
-# 1-LINE FIBONACCI SEQUENCE CODE
+# BONUS 2: 1-LINE FIBONACCI SEQUENCE CODE (Lambda ops)
 
 fibonacci = lambda x: x if x <= 1 else fibonacci(x-1) + fibonacci(x-2)
 # lambda can take an argument, called 'x' in this case
@@ -707,3 +708,92 @@ for thing in new_dict:
     new_dict.append(new_dict[x])
 print(new_dict) 
 # doesn't work with input as expected
+
+# =================================================================================================
+# COMMON DICTIONARIES APPLICATIONS
+
+# COUNTING
+my_dict = {'allen': 3, 'joshua': 2, 'benjamin': 5, 'charles': 1}
+print(my_dict.get('allen', 5))
+
+# HISTOGRAM
+myDict = dict()
+names = ['allen', 'barry', 'barry', 'josh', 'allen',  'ken', 'william', 'allen', 'daniel']
+for name in names:
+    if name not in myDict:
+        myDict[name] = 1
+    else:
+        myDict[name] = myDict[name] + 1
+print(myDict)
+
+# .GET METHOD
+myDict = dict()
+names = ['allen', 'barry', 'barry', 'josh', 'allen',  'ken', 'william', 'allen', 'daniel']
+for name in names:
+    myDict[name] = myDict.get(name, 0) + 1
+    # 0 will be pur default value
+print(myDict)
+
+# =================================================================================================
+# DICTIONARIES AND LOOPS
+
+# KEY COUNT
+counts = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
+for key in counts:
+    if counts[key] > 10:
+        print(key, counts[key])
+# Prints out keys (K/V)
+print(counts.keys())
+# Prints out values
+print(counts.values())
+# Prints out all items in the dictionary
+print(counts.items())
+# Prints out data type in case it exists
+print(counts.type())
+
+# WORDS COUNT
+text = dict()
+inp = input('Enter your text:')
+
+words_sp = inp.split()
+print('Words', words_sp)
+
+for word in words_sp:
+    text[word] = text.get(word, 0) + 1
+    total = len(words_sp) 
+    # use len() to get the total of words
+    # otherwise, use count() specifying a key to count the amount of that element
+
+print('Count', text)
+print('Total', total)
+
+# BONUS: TWO ITERATION VARIABLES
+counts = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
+for a,b in counts.items():
+    print(a,b)
+
+# EXAMPLE:
+inp = input('Enter text file:')
+
+try:
+    handle = open(inp, 'r')
+except Exception as e:
+    print('Error' + str(e))
+
+counts = dict()
+for line in handle:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+print(counts)
+
+bigCount = None
+bigWord = None
+for word,count in counts.items():
+    if bigCount is None or count > bigCount:
+        bigCount = count
+        bigWord = word
+print(bigCount)
+print(bigWord)
+
+# =================================================================================================
