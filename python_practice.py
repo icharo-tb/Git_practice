@@ -313,13 +313,14 @@ linea = [1, 4, 'H@la', 'me,', 'llamo', '1b8n', '.PyTHon Mola']
 
 linea[2] = linea[2].replace('@', 'o')
 
-linea[3] = linea[3].replace(',', ' ')
+linea[3] = linea[3].replace(',', '')
 
 linea[5] = linea[5].replace('1', 'I')
 linea[5] = linea[5].replace('8', 'o')
 
-linea[6] = linea[6].replace('TH', 'th')
-linea[6] = linea[6].replace('M', 'm')
+linea[6] = linea[6].capitalize()
+#linea[6] = linea[6].replace('TH', 'th')
+#linea[6] = linea[6].replace('M', 'm')
 linea[6] = linea[6][1:]
 
 print(linea[2:]) # pendiente de revision

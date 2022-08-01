@@ -1,4 +1,5 @@
 import sys
+from mysqlx import Row
 import pymongo
 import pandas as pd
 import requests
@@ -99,6 +100,19 @@ if __name__ == '__main__':
         'timestamp': timestamps
     }
 
+    #--------------------------------------------------------------------------------------------------------
+    # JSON file
+
+    try:
+        jsonString = json.dumps(song_dict, separators = (',', ':'))
+        jsonFile = open('spotify_etl.json', 'w')
+        jsonFile.write(jsonString)
+        jsonFile.close()
+        print('JSON File succesfully generated!')
+    except:
+        print('Error')
+        # works, order is important
+
     # Pandas dataframe creation
     df = pd.DataFrame(song_dict, columns = ['song_name', 'artist_name', 'played_at', 'timestamp'])
 
@@ -122,11 +136,11 @@ db_dict = song_dict
 db_dict = [db_dict]
 # Dictionaries will cause problems here, maybe trying bulk ops
 
-try:
+'''try:
     bulk = collection.insert_many(song_dict)
 except:
     print('Next step.')
-    sys.exit()
+'''
 
 mongo_insert = collection.insert_many(db_dict)
 
