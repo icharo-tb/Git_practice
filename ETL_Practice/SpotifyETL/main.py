@@ -111,7 +111,10 @@ if __name__ == '__main__':
         print('JSON File succesfully generated!')
     except:
         print('Error')
+        sys.exit()
         # works, order is important
+
+    #--------------------------------------------------------------------------------------------------------
 
     # Pandas dataframe creation
     df = pd.DataFrame(song_dict, columns = ['song_name', 'artist_name', 'played_at', 'timestamp'])
