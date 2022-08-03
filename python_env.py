@@ -1,3 +1,4 @@
+from msilib.schema import RemoveRegistry
 from numpy import average
 
 
@@ -183,7 +184,7 @@ res = payment(hours, rate)
 
 print(f'Your hours are {hours}, your rate is {rate} and your payment is {res}.')
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 # Number guesser with WHILE LOOP
 
 import random
@@ -217,7 +218,7 @@ if count >= math.log(num_high - num_low + 1, 2):
     print('\nThe number is %d' % ran_num)
     print('\tBetter luck next time!')
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 
 n = 0
 
@@ -529,7 +530,7 @@ for line in text:
     up = line.upper()
     print(up)
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 # EXTRA STUFF
 
 def coco(coquito = []):
@@ -546,7 +547,7 @@ def coco_noice(coconutito = 0):
 
 print(coco_noice())
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 # PYTHON LISTS
 
 fruit = 'BANANA'
@@ -639,8 +640,9 @@ for line in fhand:
         continue
     print(words[2])
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 # BONUS: FIBONACCI SEQUENCE
+# The Fibonacci sequence is based on the add of a num by its previous. Therefore, 1+1 = 2, 2+1 = 3...
 
 num = int(input('Term lenght:'))
 
@@ -678,7 +680,7 @@ def fibonacci_seq(i):
 print(fibonacci_seq(i))
 # check later how to construct this function
 
-# =================================================================================================
+#--------------------------------------------------------------------------------------------------
 # PYTHON DICTIONARIES
 
 bag = dict()
@@ -761,7 +763,7 @@ for word in words_sp:
 print('Count', text)
 print('Total', total)
 
-# BONUS: TWO ITERATION VARIABLES
+# --BONUS-- TWO ITERATION VARIABLES
 counts = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
 for a,b in counts.items():
     print(a,b)
@@ -790,4 +792,123 @@ for word,count in counts.items():
 print(bigCount)
 print(bigWord)
 
+#--------------------------------------------------------------------------------------------------
+# BONUS: JACCARD SIMILARITY
+# It is mainly used to compare betwwen two sets and calculate it's similarity ratio
+
+def jaccard_similarity(A, B):
+    # This will find the common elements, that is, the intersection between the sets
+    nominator = A.intersection(B)
+
+    # We will find the union between the sets
+    denominator = A.union(B)
+
+    # Now for the ratio
+    similarity_ratio = len(nominator)/len(denominator)
+    return similarity_ratio
+
+A = {1,2,3,5,7}
+B = {1,2,4,8,9}
+
+print(jaccard_similarity(A, B))
+
 # =================================================================================================
+# BONUS: 2nd GRADE EQUATION
+
+# (-b+-((b**2) - (4 * a) * c)**2) / 2 * a | It will need some formula changes
+# x**2 - 5x + 6 = 0
+
+a = 1
+b = -5
+c = 6
+
+# It can have int or work as a float
+secGrade_eq_pos = int((-b + ((b**2) - (4 * a) * c)**2) / 2 * a)
+secGrade_eq_neg = int((-b - ((b**2) - (4 * a) * c)**2) / 2 * a)
+
+print(f'The first result is {secGrade_eq_pos} and the second result is {secGrade_eq_neg}')
+
+# DISCRIMINANT aka DELTA
+# print('\u0394') DISCRIMINANT / DELTA unicode
+
+# When using discriminant:
+    # If DISC > 0 --> 2 different real solutions
+    # If DISC = 0 --> 2 equal real solutions
+    # If DISC < 0 --> 2 no real solutions, just 2 complex solutions
+
+# 3x**2 - 5x + 1 = 0
+
+a = 3
+b = -5
+c = 1
+
+discGrade_eq = int((b**2) - (4 * a) * c)
+
+print(f'DISCRIMINANT \u0394 is equal to {discGrade_eq}')
+
+if discGrade_eq > 0:
+    print('Equation has 2 different real solutions')
+elif discGrade_eq == 0:
+    print('Equation has 2 equal real solutions')
+elif discGrade_eq < 0:
+    print('Equation has no real solutions, it has 2 complex solutions')
+
+#--------------------------------------------------------------------------------------------------
+# TUPLE COLLECTIONS
+
+# Tuples are similar to lists, but, they are inmutable
+x = (1,2,9)
+x[2] = 6 # this will blow up cause a tuple cannot be modified
+print(x)
+
+x = tuple()
+print(dir(x))
+
+(x, y) = (5, 'fred')
+print(y)
+
+tdict = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
+for (x, y) in tdict.items():
+    print(x, y)
+# We use .items() in order to get our dictionary turned into a tuple 
+
+tup = tdict.items()
+print('\n', tup)
+
+#--------------------------------------------------------------------------------------------------
+# COMPARING AND SORTING TUPLES
+
+tdict = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
+#tup = tdict.items()
+#print(sorted(tup))
+
+temp = list()
+for k, v in tdict.items():
+    temp.append((v, k))
+print(temp)
+
+temp = sorted(temp, reverse = True)
+print(temp)
+
+# Word counting applying tuples
+
+f = open('mbox-short.txt')
+counts = dict()
+for line in f:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+
+lst = list()
+for k, v in counts.items():
+    tup = (k, v)
+    lst.append(tup)
+
+lst = sorted(lst, reverse = True)
+
+for k, v in lst[:10]:
+    print(k, v)
+
+tdict = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
+print(sorted([(v, k) for k, v in tdict.items()], reverse = True))
+# Important to remember that the order of k,v variables changes the displayed order
