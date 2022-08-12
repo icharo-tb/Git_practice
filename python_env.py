@@ -912,3 +912,114 @@ for k, v in lst[:10]:
 tdict = {'allen': 1, 'joshua': 42, 'benjamin': 6, 'charles': 120}
 print(sorted([(v, k) for k, v in tdict.items()], reverse = True))
 # Important to remember that the order of k,v variables changes the displayed order
+
+#--------------------------------------------------------------------------------------------------
+# PYTHON REGULAR EXPRESSIONS
+
+# Regular expressions are a kind of language itself, its really powerful
+# to use the we will import re
+
+
+mail_t = 'His e-mail is q-lar@freecodecamp.org'
+mail_ts = mail_t.rstrip()
+if mail_ts.find('@'):
+    print('Its a mail')
+
+# We can do the exact same operation using re.search() instead
+
+import re
+
+mail_t = 'His e-mail is q-lar@freecodecamp.org'
+mail_ts = mail_t.rstrip()
+if re.search('@', mail_ts):
+    print('Its a mail')
+
+# re.search() can also substitute .startswith()
+
+#--------------------------------------------------------------------------------------------------
+# PYTHON REGULAR EXPRESSIONS: MATCHING AND EXTRACTING DATA
+
+import re
+
+x = 'My 2 favorite numbers are 19 and 42'
+y = re.findall('[0-9]+', x) # [0-9] means one single digit from 0 to 9, when we use the + we are
+# indicating to find one or more digit strings
+print(y)
+y = re.findall('[a-u]+', x) # works the same with letters
+print(y)
+
+# GREEDY MATCHING
+import re
+x = 'From: Using the : character'
+y = re.findall('^F.+:', x) 
+# ^F indicates that starts with F
+# .+ indicates that it has one or more characters (this is GREEDY)
+# : indicates the last character in the match
+print(y)
+
+# NON-GREEDY MATCHING
+import re
+x = 'From: Using the : character'
+y = re.findall('^F.+?:', x) 
+# ^F indicates that starts with F
+# .+? indicates that it has one or more characters but not greedy (? similar to !=)
+# : indicates the last character in the match
+print(y)
+
+import re
+s = 'A message from csev@umich.edu to cwen@iupui.edu about meeting @2PM'
+lst = re.findall('\\S+@\\S+', s)
+# \S+ means: at least one non-whitespace character
+# \\S+@\\S+ means: at least 2 non-whitespaces before, followed by an @ 
+    # and ending with at least 2 non-whitespaces
+print(lst)
+
+import re
+s = 'A message from csev@umich.edu to cwen@iupui.edu about meeting @2PM'
+lst = re.findall('^A(\\S+@\\S+)', s)
+print(lst)
+
+#--------------------------------------------------------------------------------------------------
+# PYTHON REGULAR EXPRESSION: PRACTICAL APLICATIONS
+
+mail_str = 'From stephen.marques@gmail.com Sat Jan  5 09:15:45 2022'
+words = mail_str.split()
+email_ = words[1]
+lst = email_.split('@')
+print(lst[1])
+
+import re
+mail_str = 'From stephen.marques@gmail.com  and john.skittle@gmail.com Sat Jan  5 09:15:45 2022'
+y = re.findall('@([^ ]*)', mail_str)
+# [^ ] will match non-blank character
+# * matches many of them 
+print(y)
+
+import re
+mail_str = 'From stephen.marques@gmail.com  and john.skittle@gmail.com Sat Jan  5 09:15:45 2022'
+y = re.findall('[^ ]*@', mail_str)
+print(y)
+
+import re
+mail_str = 'From stephen.marques@gmail.com  and john.skittle@gmail.com Sat Jan  5 09:15:45 2022'
+y = re.findall('^From.*@([^ ]*)', mail_str)
+print(y)
+
+import re
+with open(r'C:\Users\DANIEL\workspace\gitwork\mbox-short.txt', 'r') as file:
+    for line in file:
+        print(line)
+        numlist = list()
+        line = line.rstrip()
+        stuff = re.findall('^X-DSPAM-Confidence:([0-9.]+)', line)
+        if len(stuff) !=1:
+            continue
+        num = float(stuff[1])
+        numlist.append(num)
+    print(stuff)
+
+import re
+x = 'We just received $10.00'
+y = re.findall('\$[0-9.]+', x)
+# \$ matches a real dollar sign
+print(y)
