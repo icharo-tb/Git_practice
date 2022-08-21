@@ -6,3 +6,4 @@ MongoDB/
 .vscode
 connection.py
 config.py
+algorithm_formatter.py

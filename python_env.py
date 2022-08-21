@@ -108,6 +108,66 @@ if turn > 0:
 else:
     print('Not a number')
 
+#--------------------------------------------------------------------------------------------------
+# PYTHON RECURSIVE ALGORITHM
+# Recursion is basicly calling the fuction inside the function
+# Easy example would be factorial numbers:
+    # This is a factorial: 4!, where exclamation means factorial of the number 4
+        # This can be transalated to: 4 * 3 * 2 * 1 which is equal to 24
+        # Also, this problem can be seen as 4 * 3!, and 3 can be seen as 3 * 2! and on and on
+        # Important: factrorial for 1 and 0 are the following (ALWAYS!!)
+            # 1! = 1
+            # 0! = 1
+
+# In the iterative function code what we want to do is an iterative loop that does the following:
+
+        # def factorial(4):
+            # factorial = 1
+            # for x = 1 to 4:
+                # factorial = factorial * x
+    
+    # So our code sets a factorial to 1, and its going to loop and multiply x by our number
+
+    # Whereas on using recursion, our code will complete factorial of 1! until the number we asked for
+        # So the code is basicly reading and returning until it completes the loop
+    # So, for a recursive algorithm it would look like this:
+
+        # def factorial(n):
+            # if n < 2:
+                # return 1
+            # else:
+                # return n * factorial(n - 1)
+    
+    # The first condition is our debugging line, in case n is less than 2 just return 1 cause that is the result of factorial for 1 and 0
+    # Otherwise, return n and multiply it by (n - 1) times
+        # This works by the logic that, if n = 5 we are gonna multiply it by 4 as 5! is the same as 5 * 4!
+            # And here is where the loop starts as it will do:
+                # 5 * 4!
+                    # 4 * 3!
+                        # 3 * 2!
+                            # 2 * 1!
+                                # 1 * 0!
+                                    # And then it will return the result (120 in this case)
+
+def recursive_factorial(n):
+    if n < 2:
+        return 1
+    elif n < 0:
+        return -1
+    else:
+        return n * recursive_factorial(n-1)
+pass
+
+def iterative_factorial(n):
+    if n < 0:
+        return -1
+    else:
+        factorial = 1
+        for i in range(1, n+1):
+            factorial *= i
+        return factorial
+pass    
+
 # =================================================================================================
 
 temp = "5 degrees"
@@ -671,13 +731,25 @@ else:
 fibonacci = lambda x: x if x <= 1 else fibonacci(x-1) + fibonacci(x-2)
 # lambda can take an argument, called 'x' in this case
 
-print([fibonacci(i) for i in range(10)])
+print([fibonacci(i) for i in range(5)])
 
-def fibonacci_seq(i):
-    lambda x: x if x <= 1 else i(x-1) + i(x-2)
-    for i in range(10):
-        return i
-print(fibonacci_seq(i))
+# Fibonacci Formula:
+    # Fn = (Fn-1) + (Fn-2)
+
+def fibonacci_seq(n):
+    if n < 0:
+        return f'Error'
+    elif n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci_seq(n-1) + fibonacci_seq(n-2)
+pass
+
+print(fibonacci_seq(5))
+
+
 # check later how to construct this function
 
 #--------------------------------------------------------------------------------------------------
@@ -1023,3 +1095,63 @@ x = 'We just received $10.00'
 y = re.findall('\$[0-9.]+', x)
 # \$ matches a real dollar sign
 print(y)
+
+#--------------------------------------------------------------------------------------------------
+# PYTHON NETWORKING
+
+# TCP Architecture: Transport Control Protocol works by connecting P2P your pc with a server sending packages back and forth
+    # In programming those connection points are called Sockets
+    # We will make use of Ports: which are endpoints for the software connection
+        # Common TCP Ports:
+            # HTTPS(443) - Secure
+            # HTTP(80)
+            # SSH(22) - Secure Login
+            # DNS(53) - Domain Name
+
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# socket.AF_INET will create a socket connection to internet ports
+mysock.connect(('freecodecamp.org', 80))
+
+# A URL have three main elemnts:
+    # EX: https://www.dr-chuck.com/page.htm
+        # Protocol: https://
+        # Host: www.dr-chuck.com
+        # Document: page.htm
+
+# WEB BROWSER
+
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+# \r its a 'carriage return' while \n its a 'line break'
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if len(data) < 1:
+        break
+    print(data.decode())
+mysock.close()
+# This will help us decode the information we are getting from the web so Python can understand it
+# The process here is a give and receive:
+    # First of all we are sending the information based on Unicode (due to Python 3)
+    # We encode() into UTF-8 and send() it to the socket connected to the network
+    # Then we recover with recv() all the info in UTF-8
+    # Finally we decode() the information back to Unicode so Python 3 can understand it
+        # Extra code stuff:
+            # cmd are basicly the bytes we are sending
+
+# TEXT PROCESSING
+# ASCII: American Standard Code for Information Interchange
+    # Unicode: billions of characters
+        # UTF = Unicode Transformation Format
+            # UTF-8: 1-4 bytes
+            # UTF-16: 2 bytes
+            # UTF-32: 4 bytes
+
+# In python, the function ord() will return the ASCII value of a character
+print(ord('A'))
