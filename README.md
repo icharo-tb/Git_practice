@@ -9,6 +9,5 @@
 - I called it Git since I upload all my content using git (quite obvious :smile: )
 
 - The gallery is divided in four branches, but the important ones are:
-	- main
-	- learnbranch (where I upload eberything to be honest)
+	- learnbranch (where I upload almost everything)
 	- mongodb (Mainly mongo operations)
