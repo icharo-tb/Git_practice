@@ -1155,3 +1155,240 @@ mysock.close()
 
 # In python, the function ord() will return the ASCII value of a character
 print(ord('A'))
+
+# We can retrieve information from a url using urllib within a few lines of code
+# We can do almost every kind of operation just by requesting the url information we want
+import urllib.request, urllib.parse, urllib.error
+
+linkLine = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+for line in linkLine:
+    print(line.decode().rstrip())
+
+count = {}
+
+for line in linkLine:
+    words = line.decode().rstrip()
+    print(words)
+    for word in words:
+        count[word] = count.get(word, 0) + 1
+print(count)
+
+# PYTHON WEB SCRAPER
+# What is web scraping?
+    # Web scraping is when a program or script pretends to be a browser and retrieves web pages
+        # It can retrieve any kind of information and when it finishes it looks for more web pages
+    # Other methods are the called Web Crawlers, where we use trackers or spiders to search information
+
+# Why Scrape?
+    # Pull Data
+    # Get your own data from any source that has no native export capability
+    # Monitor sites for new info
+    # Spider/Track the web in order to make a database for a search engine
+
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+
+# Lets ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = 'http://dr-chuck.com/page1.htm'
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+
+tags = soup('a') # a = anchor tags
+for tag in tags:
+    print(tag.get('href', None))
+
+import requests
+
+URL = 'http://dr-chuck.com/page1.htm'
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246'}
+# User-Agent headers can be found here: https://deviceatlas.com/blog/list-of-user-agent-strings
+req = requests.get(url=URL, headers=headers)
+print(req.content)
+
+# WEB SERVICES
+# Most common data sending formats: XML and JSON
+    # XML:
+        # XML = eXtensible Markup Language
+            # XML Terminology: Tags, Attributes, Serialize/De-serialize
+        # Basic XML structure:
+            # <person> -> Starter tag
+            #   <name>Chuck</name>
+            #   <phone type="intl">+1 734 303 4456</phone> -> Normal tag with an attribute type
+            #   <email hide="yes"/> -> Self closing tag with an attribute hide
+            # </person>
+        # XML Schema:
+            # They are several guidelines that sets a XML as a complete readable format
+            # XSD(WS3 Schema specifications for XML files):
+                # xs:Type
+                # xs:element
+                # xs:sequence
+                # When using time data types, XML Schema will store it as Universal time:
+                    # 2022-05-03T09:37:24Z :
+                        # 2022-05-03 is the year-month-day
+                        # 09:37:24 is the time of the day
+                        # Z corresponds to the time zone(where Z is for local)
+                            # Usually we see UTC or GMT
+import xml.etree.ElementTree as ET
+
+data =  '''<person> 
+    <name>Chuck</name>
+    <phone type="intl">+1 734 303 4456</phone> 
+    <email hide="yes"/> 
+</person>'''
+
+tree = ET.fromstring(data)
+print(f'Name: {tree.find("name").text}')
+print(f"Phone Number: {tree.find('phone').text}")
+print(f'Attr: {tree.find("email").get("hide")}')
+
+import xml.etree.ElementTree as ET
+
+data2 = '''<data>
+    <users>
+        <user x="2">
+            <id>001a</id>
+            <name>Josh</name>
+        </user>
+         <user x="7">
+            <id>002a</id>
+            <name>Carl</name>
+        </user>
+    </users>
+</data>'''
+
+stuff = ET.fromstring(data2)
+lst = stuff.findall('users/user')
+print(f'User count: {len(lst)}\n\nUsers:')
+
+for i in lst:
+    print('-'*10)
+    print(f"ID: {i.find('id').text}")
+    print(f"Name: {i.find('name').text}")
+    print(f"Attr: {i.get('x')}")
+    print('-'*10)
+
+    # JSON:
+        # JSON: JavaScript Object Notation
+            # It comes from JS syntax
+            # Data is represented as nested lists and dictionaries
+
+import json
+
+data = '''{
+    "name": "Chuck",
+    "phone": {
+        "type": "intl",
+        "number": "+1 456 783 9224"
+    },
+    "email": {
+        "hide": "yes"
+    }
+}'''
+
+info = json.loads(data)
+print(f"Name: {info['name']}")
+print(f"Hide: {info['email']['hide']}")
+# This is a classic and easy JSON file, since everything is stored in dictionaries it makes searches easier
+
+import json
+
+data = '''[
+    {
+        "id": "002",
+        "age": "31",
+        "name": "Chuck",
+        "email": {
+            "hide": "yes"
+        }
+    },
+    {
+        "id": "013",
+        "age": "25",
+        "name": "Elysa",
+        "email": {
+            "hide": "no",
+            "mail": "elysavangut@gmail.com"
+        }
+    }
+]'''
+
+info = json.loads(data)
+print(f"User count: {len(info)}")
+# Now, when JSON files are stored as lists, we need to iterate over every element to make efficient searches
+for item in info:
+    print('-'*10)
+    print(f"ID: {item['id']}")
+    print(f"Name: {item['name']}")
+    print(f"Age: {item['age']}")
+    print(f"Hide E-mail: {item['email']['hide']}")
+    if 'mail' in item['email']: # Find an element "in" a list, so we search the term "mail" inside the "email" dict of item
+        print(f"E-mail: {item['email']['mail']}")
+    print('-'*10)
+
+#---------------------------------------------------
+# FIND MAX NUMBER IN SEQUENCE
+
+# Find the max number on a sequence of 3 numbers that added consecutively results in x
+    # x = 60
+        # expected output: 19 + 20 + 21 = 60
+
+# x = 60
+# mid_seq = x//2 (3 number then // 3)
+    # We use here int division //
+# min_seq = mid_seq - 1
+# max_seq = mid_seq + 1
+
+def max_number_seq(x):
+    nl = '\n'
+
+    mid_seq = x//3
+    min_seq = mid_seq - 1
+    max_seq = mid_seq + 1
+
+    return f"{min_seq} + {mid_seq} + {max_seq} = {x}{nl}The max number is: {max_seq}"
+pass
+
+print(max_number_seq(60))
+
+#---------------------------------------------------
+# SOA (Service Oriented Approach)
+# It is a apporach to solve a complex application problem where data is not present in one computer system only
+    # Data has spread out over the internet
+
+# APIs
+# API stands out for Application Program Interface
+    # An API help us by specifying an interface and controling the behaviour of ebery object in that interface
+    # Documentation is important to understand others APIs workflow
+
+import requests
+import json
+
+# Needs API Key
+url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1:
+        break
+
+    par = {'address': address}
+    response = requests.get(url, params=par)
+
+    print(f'Retrieving {url}')
+    data = response.text
+    print(f'Retrieved {len(data)} characters')
+
+    try:
+        js = response.json()
+        print(js)
+    except:
+        js = None
+
+# response.content() -> Return the raw bytes of the data payload
+# response.text() -> Return a string representation of the data payload
+# response.json() -> This method is convenient when the API returns JSON
