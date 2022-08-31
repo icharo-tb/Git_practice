@@ -6,15 +6,15 @@
         {
             "id": 1,
             "course_name": "Scientific Computing Python",
-            "starting_date": "07/2022",
+            "starting_date": "2022-07",
             "finishing_date": "unknown",
             "course_web": "freecodecamp.org"
         },
         {
             "id": 2,
             "course_name": "Introduction to MongoDB",
-            "starting_date": "07/2022",
-            "finishing_date": "07/2022",
+            "starting_date": "2022-07",
+            "finishing_date": "2022-07",
             "course_web": "coursera.com"
         }
     ]
