@@ -10,7 +10,7 @@ This space was mainly designed to upload files and practices related to Data Eng
 
 ---
 #### Python
-This comprehends any .py file, they are mainly uploaded without order although main file rn is **python_env.py** where almost all study and code is written.
+This comprehends any .py file, they are mainly uploaded without any order, although main file right now is **python_env.py**, where almost all study and code is written.
 
 The are also other files such as PySpark ones, which are jupyter notebooks written in Databricks.
 
