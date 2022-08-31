@@ -6,15 +6,22 @@ import requests
 import json
 from datetime import datetime
 import datetime
+from dotenv import load_dotenv
+import os
+from pathlib import Path
 
 # URLs used:
     # TOKEN: https://developer.spotify.com/console/get-recently-played/
     # PROJECT INSPIRATION: https://github.com/karolina-sowinska/free-data-engineering-course-for-beginners/blob/master/main.py
 
+# We created an .env file to store some personal variables
+dotenv_path = Path('ETL_Practice\SpotifyETL\.env')
+load_dotenv(dotenv_path=dotenv_path)
+
 # By typing in capital letters we'll create a constant, which, contrary to variables, these are inmutable
-USER_DB = 'mongodb://localhost:27017' # not sure if it will work
-USER_ID = '' # Spotify user id
-USER_TOKEN = '' # Token generated
+USER_DB = os.getenv('USER_DB') # not really necessary
+USER_ID = os.getenv('USER_ID') # Spotify user id
+USER_TOKEN = '' # Token generated (time limited token)
 
 #--------------------------------------------------------------------------------------------------------
 
