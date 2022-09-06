@@ -11,3 +11,6 @@ vg_kill.json
 web_scraper.py
 gw2scrape.py
 urls.txt
+/sql_english
+/gw2_srs
+text_trial.py

@@ -1392,3 +1392,55 @@ while True:
 # response.content() -> Return the raw bytes of the data payload
 # response.text() -> Return a string representation of the data payload
 # response.json() -> This method is convenient when the API returns JSON
+
+# Some APIs use an OAuth to make sure you have a valid key to make the proper connection with the API
+
+#---------------------------------------------------
+# PYTHON OBJECTS (CLASS)
+
+#------------------------------------------------
+# USUAL CLASS STATEMENT:
+class Chalkboard:
+    def __init__(self, lenght, height, name, color):
+        self.lenght = lenght
+        self.height = height
+        self.name = name
+        self.color = color
+
+chalkb = Chalkboard(50,25,'chalky-2','white')
+print(chalkb)
+
+# DATACLASS STATEMENT(shorter):
+from dataclasses import dataclass
+
+@dataclass
+class Chalkboard:
+    lenght: int
+    height: int
+    name: str
+    color: str
+
+chalkb = Chalkboard(50,25,'chalky-3','black')
+print(repr(chalkb))
+
+# MULTIPLE CLASS:
+
+# Some classes can be called multiple times, but you can always DRY(Don't Repeat Yourself) them:
+
+class TestMath:
+    def __init__(self):
+        self.x = 10
+        self.y = 20
+        
+    # From here we could make other fucntions to add, substract, etc. 
+    # and call self.x = 10 everytime, but, we can also just call self.x
+
+    def test_add(self):
+        return self.x + self.y
+    def test_sub(self):
+        return self.x - self.y
+    def test_div(self):
+        return self.x // self.y
+    def test_multiply(self):
+        return self.x * self.y
+#------------------------------------------------
