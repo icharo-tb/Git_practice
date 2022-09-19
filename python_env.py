@@ -1397,6 +1397,24 @@ while True:
 
 #---------------------------------------------------
 # PYTHON OBJECTS (CLASS)
+# Bit of self contained code and data
+    # - Class is a template (A dog)
+    # - Method is a defined capability of that class (Its bark())
+    # - Attributed are bits of data in that class (Its lenght)
+    # - Instance is a particular instance on that class (A dog name: Lassie)
+
+class PartyAnimal:
+    x = 0
+
+    def party(self):
+        self.x = self.x + 1
+        print(f"So far {self.x}")
+
+an = PartyAnimal()
+print(type(an)) 
+print(dir(an)) # Shows every method that variable can receive
+an.party()
+an.party()
 
 #------------------------------------------------
 # USUAL CLASS STATEMENT:
