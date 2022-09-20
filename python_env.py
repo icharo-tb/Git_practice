@@ -1398,10 +1398,63 @@ while True:
 #---------------------------------------------------
 # PYTHON OBJECTS (CLASS)
 # Bit of self contained code and data
-    # - Class is a template (A dog)
-    # - Method is a defined capability of that class (Its bark())
-    # - Attributed are bits of data in that class (Its lenght)
-    # - Instance is a particular instance on that class (A dog name: Lassie)
+    # Class is a template (A dog)
+    # Method is a defined capability of that class (Its bark())
+    # Attributed are bits of data in that class (Its lenght)
+    # Instance is a particular instance on that class (A dog name: Lassie)
+
+# Objetcs Lifecycle:
+    # Objetcs are created, used and discarded
+    # Objects have special blocks of code called Methods:
+        # Creators: at the moment of creation
+        # Destructors: at the moment of destruction
+
+class PartyAnimal:
+    x = 0
+
+    def __init__(self):
+        print('Im builded')
+
+    def party(self):
+        self.x = self.x + 1
+        print(f"So far {self.x}")
+
+    def __del__(self):
+        print('Im destroyed', self.x)
+
+an = PartyAnimal()
+an.party()
+an.party()
+
+class PartyAnimal:
+    x = 0
+    name = '' 
+    # _init_ stand for an Instance or object creator
+    def __init__(self, nam): # Self is always needed on an object, however, nam here is an argument that is taking the name variable in
+        self.name = nam
+        print(self.name,'constructed')
+    def party(self):
+        self.x = self.x + 1
+        print(self.name,'party count',self.x)
+
+# q = PartyAnimal('Quincy')
+# m = PartyAnimal('Miya')
+
+# q.party()
+# m.party()
+# q.party()
+
+# This new class will Inherit previous variables and methods (Inheritance is an advantage of classes)
+class FootballFan(PartyAnimal):
+    pt = 0
+    def touchdown(self):
+        self.pt = self.pt + 7
+        self.party()
+        print(self.name, 'points', self.pt)
+
+j = FootballFan('Jim')
+# j.party()
+j.touchdown()
 
 class PartyAnimal:
     x = 0
