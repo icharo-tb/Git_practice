@@ -1515,3 +1515,9 @@ class TestMath:
     def test_multiply(self):
         return self.x * self.y
 #------------------------------------------------
+# RELATIONAL DATABASES + SQLite
+
+# CREATE TABLE 'something' ('id' INTEGER, 'name' TEXT)
+# DELETE FROM something WHERE --condition--
+# UPDATE something SET --field to change-- WHERE --condition--
+# ORDER BY --field--ASC/DESC
