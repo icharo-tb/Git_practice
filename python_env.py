@@ -1517,7 +1517,27 @@ class TestMath:
 #------------------------------------------------
 # RELATIONAL DATABASES + SQLite
 
+# Indexes: they improve access performance for things (i.e: strings, integers...)
+# Constraints: data requirements (NOT NULL...)
+# Transactions: allow SQL operations to be grouped and done as a unit (JOINs...)
+
 # CREATE TABLE 'something' ('id' INTEGER, 'name' TEXT)
 # DELETE FROM something WHERE --condition--
 # UPDATE something SET --field to change-- WHERE --condition--
 # ORDER BY --field--ASC/DESC
+
+# SQL - DATA MODELLING KEYS:
+    # PRIMARY KEY: normally it represents an int that auto-increments (i.e: ID)
+    # LOGICAL KEY: What we can point for people to see (i.e: Professions)
+    # FOREIGN KEY: normally it is an int key we point out to other rows in different tables (i.e: group_id)
+
+# SQL JOINS:
+    # SELECT group_id.p_group, player_info.name FROM group_id JOIN player_info ON player_info.player_id = player_info.id
+    # Multiple JOINs can be performed in a single query
+
+#------------------------------------------------
+# WEB CRAWLING
+
+# PageRanks: optimizes online searches
+# Mailing Lists:
+    # Gmane
