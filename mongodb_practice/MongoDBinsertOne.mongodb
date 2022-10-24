@@ -1,10 +1,23 @@
-use('mongodatabase_env');
+use('course_list');
 
-db.info.insertOne([
-  {
-  name: 'He´s the greatest dancer',
-  artist: 'Sister Sledge',
-  genre: ['Disco', 'R&B'],
-  year: 1979
-  }
-]);
+db.info.insertOne({
+    "author": "icharo-tb",
+    "creation_date": "2022-08-11",
+    "update_date": "2022-08-12",
+    "courses":[
+        {
+            "id": 1,
+            "course_name": "Scientific Computing Python",
+            "starting_date": "unknown",
+            "finishing_date": "unknown",
+            "course_web": "freecodecamp.org"
+        },
+        {
+            "id": 2,
+            "course_name": "Introduction to MongoDB",
+            "starting_date": "unknown",
+            "finishing_date": "unknown",
+            "course_web": "coursera.com"
+        }
+    ]
+});
