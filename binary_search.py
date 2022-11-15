@@ -174,3 +174,23 @@ curr_index = len(list_recur) -1
 key = 'H'
 
 print(linear_search_recur(list_recur, curr_index, key))
+
+# Extra: Binary Search
+
+def binary_search(arr:list,low,high,value:int,time=0):
+
+    mid = (low+high)//2
+    time += 1
+
+    if high >= low:
+        if arr[mid] == value:
+            return f"Value is at index {mid} and needed {time} rounds"
+        elif value < arr[mid]:
+            return binary_search(arr,low,mid-1,value)
+        else:
+            return binary_search(arr,mid+1,high,value)
+    else:
+        return False
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+print(binary_search(lst,0,len(lst)-1,9))
